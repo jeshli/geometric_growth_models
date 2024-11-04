@@ -51,10 +51,16 @@ class BurnRateAnalyzer:
         plt.tight_layout()
         plt.show()
 
-    def plot_original_space(self):
+    def plot_original_space(self, type=None):
         """Plot results in original space"""
         plt.figure(figsize=(10, 6))
-        plt.bar(self.time, self.burn_data)
+
+        if type=='scatter':
+            plt.scatter(self.time, self.burn_data)
+        elif type=='line':
+            plt.plot(self.time, self.burn_data)
+        else:
+            plt.bar(self.time, self.burn_data)
 
         # Transform predictions back to original space
         pred_orig = np.exp(self.predictions.detach().numpy())
@@ -77,4 +83,4 @@ class BurnRateAnalyzer:
         """Print key findings"""
         rate = np.round(100 * conversion * self.beta[0].item(), 2).item()
         sigma = (self.beta[0].item() / self.beta_std[0].item())
-        print(f'Exponential Rate of Increase YoY: {rate}% with {sigma:.2f}σ certainty')
+        print(f'{rate}% YoY rate of increase with {sigma:.2f}σ certainty')

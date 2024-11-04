@@ -9,5 +9,4 @@ if __name__ == "__main__":
     analyzer = BurnRateAnalyzer(time_points, burn_data)
     analyzer.plot_log_space()
     analyzer.plot_original_space()
-
     analyzer.print_results(12)
