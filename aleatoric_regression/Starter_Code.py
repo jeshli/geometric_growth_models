@@ -35,7 +35,7 @@ if Synthetic_Demo:
 
 
 
-DF = pd.concat([pd.read_csv('Dates.csv', delimiter='|'), pd.read_csv('CyclesBurned.csv', delimiter='|')], axis=1)
+DF = pd.concat([pd.read_csv('../data/daily/Dates.csv', delimiter='|'), pd.read_csv('../data/daily/CyclesBurned.csv', delimiter='|')], axis=1)
 DF['Cycles Burned'] = DF['Cycles Burned'].str.replace(',','')
 DF['Cycles Burned'] = pd.to_numeric(DF['Cycles Burned'].values)
 DF['Date'] = pd.to_datetime(DF['Date'])

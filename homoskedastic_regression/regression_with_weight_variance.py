@@ -73,8 +73,8 @@ class BurnRateAnalyzer:
         plt.tight_layout()
         plt.show()
 
-    def print_results(self):
+    def print_results(self, conversion):
         """Print key findings"""
-        rate = np.round(100 * self.beta[0].item(), 2).item()
+        rate = np.round(100 * conversion * self.beta[0].item(), 2).item()
         sigma = (self.beta[0].item() / self.beta_std[0].item())
         print(f'Exponential Rate of Increase YoY: {rate}% with {sigma:.2f}σ certainty')
